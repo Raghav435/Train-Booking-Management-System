@@ -2,10 +2,9 @@ import React, { useState, useEffect } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
-import SocialComp from "./SocialComp";
 
 const App = () => {
-  const API_URI = process.env.REACT_APP_API_PROXY || "http://localhost:5000";
+  const API_URI = process.env.REACT_APP_API_PROXY || "http://localhost:8080";
 
   const [trainData, setTrainData] = useState(null);
   const [numSeats, setNumSeats] = useState("");
@@ -16,6 +15,7 @@ const App = () => {
     const fetchTrainData = async () => {
       const { data } = await axios.get(`${API_URI}/api/train`);
       setTrainData(data.train);
+      console.log(data);
     };
     fetchTrainData();
   }, [API_URI]);
@@ -62,7 +62,7 @@ const App = () => {
       <ToastContainer />
       <div className="max-w-md mx-auto md:max-w-2xl text-center">
         <h2 className="text-2xl text-[#ee5e5f] font-bold mb-14 pb-2 border-b border-[#eca74e4f] flex flex-col md:flex-row md:items-center md:justify-center">
-          <span>Train Booking System by </span>
+          <span>Train Booking System </span>
         </h2>
 
         <div className="md:flex">
@@ -105,7 +105,6 @@ const App = () => {
           >
             Book Seats
           </button>
-          <SocialComp />
         </div>
       </div>
       <div className=" mx-auto w-1/2 md:ml-5 mt-5 md:mt-0">
