@@ -53,16 +53,16 @@ const App = () => {
     }
   };
 
-  if (!trainData) {
-    return <div>Loading...</div>;
-  }
+  // if (!trainData) {
+  //   return <div>Loading...</div>;
+  // }
 
   return (
     <div className="container mx-auto mt-5 flex flex-col md:flex-row items-center">
       <ToastContainer />
       <div className="max-w-md mx-auto md:max-w-2xl text-center">
         <h2 className="text-2xl text-[#ee5e5f] font-bold mb-14 pb-2 border-b border-[#eca74e4f] flex flex-col md:flex-row md:items-center md:justify-center">
-          <span>Train Booking System </span>
+          <span>Train Booking System</span>
         </h2>
 
         <div className="md:flex">
@@ -98,14 +98,12 @@ const App = () => {
           value={numSeats}
           onChange={handleInputChange}
         />
-        <div className="flex justify-between items-center">
-          <button
-            className="bg-[#eca74e] hover:bg-[#ee5e5f] duration-200 text-white font-bold py-2 px-4 rounded mt-5 mr-4 mx-auto block"
-            onClick={handleBookSeats}
-          >
-            Book Seats
-          </button>
-        </div>
+        <button
+          className="bg-[#eca74e] hover:bg-[#ee5e5f] duration-200 text-white font-bold py-2 px-4 rounded mt-5 mx-auto block"
+          onClick={handleBookSeats}
+        >
+          Book Seats
+        </button>
       </div>
       <div className=" mx-auto w-1/2 md:ml-5 mt-5 md:mt-0">
         <div className="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden mb-5">
@@ -125,7 +123,7 @@ const App = () => {
         <div className=" mx-auto bg-white rounded-xl shadow-md overflow-hidden">
           <div className="px-6 py-4">
             <div className="grid grid-cols-7 gap-1 justify-center text-center">
-              {trainData.coach.seats.map((seat) => (
+              {trainData?.coach.seats.map((seat) => (
                 <div key={seat.number}>
                   {seat.isBooked ? (
                     <i className="fa-solid fa-couch text-red-500"></i>
